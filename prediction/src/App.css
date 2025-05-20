@@ -1,0 +1,1848 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2000ms;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4000ms;
+  }
+}
+
+/* Basic animations */
+@keyframes float {
+   0%, 100% { transform: translateY(0); }
+   50% { transform: translateY(-8px); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+/* Chart animations */
+@keyframes drawLineX {
+  from {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawLineY {
+  from {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+  }
+  to {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawPath {
+  from {
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 1500;
+  }
+  to {
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes widthGrow {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+/* New advanced animations */
+@keyframes gradientBg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+    stroke-dasharray: 0.01, 283;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 137, 283;
+    stroke-dashoffset: -160;
+  }
+  100% {
+    transform: rotate(360deg);
+    stroke-dasharray: 0.01, 283;
+    stroke-dashoffset: -335;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(59, 130, 246, 0);
+  }
+}
+
+@keyframes textGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* New Dynamic Animations */
+@keyframes floatData {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  25% { transform: translateY(-10px) rotate(-2deg); }
+  75% { transform: translateY(10px) rotate(2deg); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); }
+}
+
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* New Animations */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+@keyframes slideWidth {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* New Advanced Animation Keyframes */
+@keyframes glowEffect {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); }
+  50% { filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.4)); }
+}
+
+@keyframes floatWithRotate {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(5deg); }
+  75% { transform: translateY(10px) rotate(-5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes dataPointPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.5); opacity: 1; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(59, 130, 246, 0.3); }
+  50% { border-color: rgba(59, 130, 246, 0.7); }
+}
+
+/* Performance optimizations for animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Reduce complexity of gradient animations */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Calculation progress bar animation */
+@keyframes progressBar {
+  0% {
+    left: -30%;
+    width: 30%;
+  }
+  50% {
+    left: 30%;
+    width: 40%;
+  }
+  100% {
+    left: 100%;
+    width: 30%;
+  }
+}
+
+@keyframes fadeAndScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Enhanced animation keyframes for header elements */
+@keyframes floatCoin {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes floatElement {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-5deg);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(10px, -20px);
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.7;
+  }
+}
+
+@keyframes btnShine {
+  0% {
+    transform: translateX(-100%);
+  }
+  20% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes wave-animation-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes price-wave {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 0;
+  }
+}
+
+@keyframes fadeAndScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 1s ease-in-out forwards;
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-pulse-subtle {
+  animation: pulse 3s infinite;
+}
+
+.animate-drawLineX {
+  animation: drawLineX 1.5s ease-out forwards;
+}
+
+.animate-drawLineY {
+  animation: drawLineY 1.5s ease-out forwards;
+}
+
+.animate-drawPath {
+  animation: drawPath 2s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.animate-widthGrow {
+  animation: widthGrow 1.5s ease-out forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.5), rgba(255,255,255,0));
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-gradient {
+  background: linear-gradient(-45deg, #3b82f6, #6366f1, #8b5cf6, #3b82f6);
+  background-size: 400% 400%;
+  animation: gradientBg 15s ease infinite;
+}
+
+.animate-bounce {
+  animation: bounce 2s ease infinite;
+}
+
+.animate-spin {
+  animation: spin 2s linear infinite;
+}
+
+.animate-spinner {
+  animation: spinner 1.5s linear infinite;
+}
+
+.animate-ripple {
+  animation: ripple 1.5s ease-out infinite;
+}
+
+.animate-text-gradient {
+  background-image: linear-gradient(90deg, #3b82f6, #8b5cf6, #6366f1, #3b82f6);
+  background-size: 300% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: textGradient 5s ease infinite;
+}
+
+.animate-float-data {
+  animation: floatData 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glowPulse 3s infinite;
+}
+
+.animate-slide-in-bottom {
+  animation: slideInBottom 0.6s ease-out forwards;
+}
+
+.animate-glow-effect {
+  animation: glowEffect 3s infinite ease-in-out;
+}
+
+.animate-float-rotate {
+  animation: floatWithRotate 8s infinite ease-in-out;
+}
+
+.animate-data-point {
+  position: relative;
+}
+
+.animate-data-point::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #3b82f6;
+  border-radius: 50%;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: dataPointPulse 2s infinite;
+}
+
+.crypto-detail-logo.animate-float {
+  filter: drop-shadow(0 5px 15px rgba(59, 130, 246, 0.3));
+}
+
+/* New Utility Classes */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(to right, #3b82f6, #8b5cf6) border-box;
+  border: 2px solid transparent;
+  border-radius: 0.75rem;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: white;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.progress-bar {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: translateX(-100%);
+  animation: shimmer 2s infinite;
+}
+
+/* Glass morphism */
+.glass-effect {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .glass-effect {
+    background-color: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-card-effect {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1) !important;
+}
+
+/* Hover effects */
+.hover-raise {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-raise:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(59, 130, 246, 0.1);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-tilt {
+  transition: transform 0.3s ease;
+}
+
+.hover-tilt:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(2deg);
+}
+
+/* Enhanced Hover Effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1),
+              0 8px 10px -6px rgba(59, 130, 246, 0.1);
+}
+
+.stat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.stat-card:hover::before {
+  transform: translateX(100%);
+}
+
+/* Staggered Animation Delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Modern scrollbar */
+.modern-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Gradient text */
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.blue-gradient-text {
+  background-image: linear-gradient(90deg, #3b82f6, #6366f1);
+}
+
+.purple-gradient-text {
+  background-image: linear-gradient(90deg, #8b5cf6, #ec4899);
+}
+
+/* 3D button effect */
+.btn-3d {
+  position: relative;
+  transition: all 0.2s ease;
+  transform-style: preserve-3d;
+}
+
+.btn-3d:active {
+  transform: translateY(4px);
+}
+
+.btn-3d::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.1);
+  transform: translateZ(-1px);
+}
+
+/* Loading Effect */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Enhanced Crypto Data Container */
+.crypto-data-container {
+  position: relative;
+  z-index: 1;
+}
+
+.crypto-data-container::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: pulse 15s infinite ease-in-out;
+}
+
+/* Crypto Info Animation Classes */
+.gradient-border-card {
+  position: relative;
+  background: white;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+  border-radius: 16px;
+}
+
+.gradient-border-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -1;
+  margin: -1px;
+  border-radius: inherit;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  animation: gradientShift 3s infinite;
+  background-size: 200% 200%;
+}
+
+.animated-value {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-value::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background: rgba(59, 130, 246, 0.1);
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 4px;
+}
+
+/* Data Point Animations */
+.data-point {
+  position: relative;
+  display: inline-block;
+}
+
+.data-point::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  animation: pulse 2s infinite;
+}
+
+/* Glowing Border Effect */
+.glow-border {
+  position: relative;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  animation: borderPulse 3s infinite;
+}
+
+/* Chart Animation Elements */
+.chart-axis-x, .chart-axis-y {
+  position: absolute;
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.chart-axis-x {
+  height: 1px;
+  bottom: 20%;
+  left: 10%;
+  width: 0;
+  animation: growWidth 2s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.chart-axis-y {
+  width: 1px;
+  left: 10%;
+  bottom: 20%;
+  height: 0;
+  animation: growHeight 2s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes growHeight {
+  0% { height: 0; }
+  100% { height: 60%; }
+}
+
+.chart-label {
+  position: absolute;
+  font-size: 10px;
+  color: rgba(59, 130, 246, 0.7);
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+  animation-delay: 2.5s;
+}
+
+.chart-label-x {
+  bottom: 12%;
+  left: 10%;
+}
+
+.chart-label-y {
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  left: 5%;
+  bottom: 50%;
+}
+
+/* Price History Points */
+.price-point {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #3b82f6;
+  border-radius: 50%;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+.point-1 {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 2.7s;
+}
+
+.point-2 {
+  bottom: 40%;
+  left: 30%;
+  animation-delay: 2.9s;
+}
+
+.point-3 {
+  bottom: 35%;
+  left: 40%;
+  animation-delay: 3.1s;
+}
+
+.point-4 {
+  bottom: 45%;
+  left: 50%;
+  animation-delay: 3.3s;
+}
+
+.point-5 {
+  bottom: 50%;
+  left: 60%;
+  animation-delay: 3.5s;
+}
+
+.point-6 {
+  bottom: 60%;
+  left: 70%;
+  animation-delay: 3.7s;
+}
+
+.point-current {
+  bottom: 60%;
+  left: 70%;
+  width: this;
+  height: 10px;
+  background: #3b82f6;
+  box-shadow: 0 0 0 rgba(59, 130, 246, 0.4);
+  animation: dataPointPulse 2s infinite, fadeIn 0.3s forwards;
+  animation-delay: 0s, 3.9s;
+}
+
+/* Optimize CPU-intensive animations */
+.chart-point-animation {
+  animation: pulse 2s infinite;
+  /* Simplify animation, remove multiple animations */
+}
+
+/* Fix for price container overflow */
+.crypto-price-container {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Optimize heavy animations by using transform instead of multiple properties */
+.prediction-item:hover {
+  transform: translateY(-8px);
+}
+
+/* Fix issues with z-index and stacking contexts */
+.prediction-card, .crypto-header-card, .chart-card, .analysis-card {
+  z-index: 1;
+  position: relative;
+}
+
+/* Improve accessibility for interactive elements */
+.action-button:focus-visible,
+.tab-animate:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Enhanced Card Effects */
+.crypto-result-card, .prediction-inputs-card, .prediction-results-card {
+  overflow: hidden;
+  position: relative;
+}
+
+.crypto-result-card::before, 
+.prediction-inputs-card::before, 
+.prediction-results-card::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+  animation: pulse 8s infinite ease-in-out;
+}
+
+.crypto-logo {
+  animation: float 6s ease-in-out infinite;
+}
+
+.prediction-detail-card.predicted h4,
+.prediction-detail-card.optimistic h5,
+.prediction-detail-card.pessimistic h5 {
+  position: relative;
+  z-index: 1;
+}
+
+.prediction-detail-card.predicted h4::after,
+.prediction-detail-card.optimistic h5::after,
+.prediction-detail-card.pessimistic h5::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 3px;
+  background: currentColor;
+  opacity: 0.2;
+  border-radius: 2px;
+}
+
+/* Button Animation Effects */
+button.search-button {
+  position: relative;
+  overflow: hidden;
+}
+
+button.search-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.3) 50%, 
+    rgba(255, 255, 255, 0) 100%);
+  transition: all 0.6s;
+}
+
+button.search-button:hover::after {
+  left: 100%;
+}
+
+/* Slider Customization */
+.MuiSlider-root {
+  color: #3b82f6 !important;
+}
+
+.MuiSlider-thumb {
+  box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Input Field Focus Styles */
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #3b82f6 !important;
+  border-width: 2px !important;
+}
+
+/* Chip Animation */
+.symbol-chip, .positive-change, .negative-change {
+  position: relative;
+  overflow: hidden;
+}
+
+.symbol-chip::after, 
+.positive-change::after, 
+.negative-change::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-100%);
+  animation: shimmer 3s infinite;
+}
+
+/* Select Menu Styling */
+.MuiSelect-select {
+  padding: 14px 12px !important;
+}
+
+/* Alert Styling */
+.MuiAlert-root {
+  border-radius: 12px !important;
+}
+
+/* Paper Card Common Styles */
+.MuiPaper-root {
+  transition: all 0.3s ease !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .MuiContainer-root {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* New animations for search interaction */
+@keyframes searchIconPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes shimmerEffect {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes growPlaceholder {
+  0% { width: 20%; }
+  40% { width: 60%; }
+  100% { width: 20%; }
+}
+
+/* Enhanced search experience */
+.search-input {
+  transition: all 0.3s cubic-bezier(0.17, 0.67, 0.83, 0.67) !important;
+}
+
+.search-input.MuiOutlinedInput-root:focus-within {
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.search-icon {
+  animation: searchIconPulse 3s infinite ease-in-out;
+  color: #3b82f6;
+}
+
+/* Enhanced Search Experience Styles */
+.search-input {
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.17, 0.67, 0.83, 0.67) !important;
+}
+
+.search-input.search-input-focused {
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.search-icon {
+  animation: searchIconPulse 3s infinite ease-in-out;
+  color: #3b82f6;
+}
+
+.search-icon-pulse {
+  animation: searchIconPulse 1.5s infinite ease-in-out;
+}
+
+.search-paper {
+  padding: 2rem;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid;
+  border-color: rgba(59, 130, 246, 0.1);
+  transition: all 0.3s ease;
+}
+
+.search-paper.search-paper-focus {
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark-mode .search-paper {
+  background: rgba(30, 41, 59, 0.7) !important;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark-mode .search-paper.search-paper-focus {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.search-focus-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: translate(-50%, -50%) scale(0.9);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.ripple-active {
+  transform: translate(-50%, -50%) scale(1.1);
+  opacity: 1;
+}
+
+/* Recent searches styling */
+.recent-search-item {
+  animation: slideInBottom 0.3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transform-origin: top;
+}
+
+.recent-search-item:nth-child(1) { animation-delay: 0.05s; }
+.recent-search-item:nth-child(2) { animation-delay: 0.1s; }
+.recent-search-item:nth-child(3) { animation-delay: 0.15s; }
+.recent-search-item:nth-child(4) { animation-delay: 0.2s; }
+.recent-search-item:nth-child(5) { animation-delay: 0.25s; }
+
+/* Popular search item styling */
+.popular-search-item {
+  animation: popIn 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transform-origin: center;
+}
+
+.popular-search-item:nth-child(1) { animation-delay: 0.05s; }
+.popular-search-item:nth-child(2) { animation-delay: 0.1s; }
+.popular-search-item:nth-child(3) { animation-delay: 0.15s; }
+.popular-search-item:nth-child(4) { animation-delay: 0.2s; }
+.popular-search-item:nth-child(5) { animation-delay: 0.25s; }
+.popular-search-item:nth-child(6) { animation-delay: 0.3s; }
+
+.clear-search-button {
+  opacity: 0.7;
+  transition: all 0.2s ease !important;
+}
+
+.clear-search-button:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.dark-mode .clear-search-button:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Search categories styling */
+.category-chip {
+  transition: all 0.2s ease !important;
+  animation: fadeIn 0.3s forwards;
+}
+
+.category-chip:nth-child(1) { animation-delay: 0.05s; }
+.category-chip:nth-child(2) { animation-delay: 0.1s; }
+.category-chip:nth-child(3) { animation-delay: 0.15s; }
+.category-chip:nth-child(4) { animation-delay: 0.2s; }
+.category-chip:nth-child(5) { animation-delay: 0.25s; }
+
+.active-category {
+  transform: scale(1.05);
+  font-weight: bold;
+}
+
+/* Search button enhancements */
+.search-button {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px !important;
+  height: 50px;
+  background: linear-gradient(90deg, #3b82f6, #6366f1) !important;
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+.search-button-icon {
+  animation: pulse 2s infinite;
+}
+
+.search-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.3) !important;
+}
+
+.search-button-loading {
+  background: linear-gradient(90deg, #3b82f6, #6366f1) !important;
+}
+
+.search-in-progress {
+  position: relative;
+}
+
+.search-in-progress::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    rgba(59, 130, 246, 0.8),
+    rgba(99, 102, 241, 0.8),
+    rgba(59, 130, 246, 0.8)
+  );
+  background-size: 200% 100%;
+  animation: shimmerBg 1.5s infinite linear;
+  border-radius: 16px;
+}
+
+.button-hover-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0)
+  );
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.search-button:hover .button-hover-effect {
+  transform: translateX(100%);
+}
+
+.loading-spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.loading-text {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.loading-spinner {
+  animation: spinnerFade 1.5s infinite ease-in-out;
+}
+
+@keyframes spinnerFade {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Search tips styling */
+.search-tips {
+  animation: fadeIn 0.5s forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.search-tip-chip {
+  transition: all 0.2s ease !important;
+}
+
+.search-tip-chip:hover {
+  transform: translateY(-2px);
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  color: #3b82f6 !important;
+}
+
+.keyboard-tip-chip {
+  animation: pulse 2s infinite;
+}
+
+/* Autocomplete option enhancements */
+.autocomplete-option {
+  transition: all 0.2s ease !important;
+}
+
+.autocomplete-option:hover {
+  transform: translateX(4px);
+  background-color: rgba(59, 130, 246, 0.08) !important;
+}
+
+.option-logo {
+  transition: all 0.2s ease !important;
+}
+
+.autocomplete-option:hover .option-logo {
+  transform: scale(1.1);
+}
+
+.option-arrow {
+  transition: all 0.2s ease !important;
+}
+
+.autocomplete-option:hover .option-arrow {
+  transform: translateX(3px);
+  color: #3b82f6 !important;
+}
+
+/* Dark mode adjustments */
+.dark-mode .search-tip-chip:hover {
+  background-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+.dark-mode .autocomplete-option:hover {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+}
+
+.dark-mode .search-input-focused {
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
+}
+
+.dark-mode .search-button {
+  background: linear-gradient(90deg, #3b82f6, #4f46e5) !important;
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3) !important;
+}
+
+.dark-mode .search-button:hover {
+  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* No results styling */
+.no-results-icon {
+  animation: floatUpDown 3s infinite ease-in-out;
+}
+
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Improving responsive design for the enhanced search */
+@media (max-width: 600px) {
+  .search-paper {
+    padding: 1.5rem;
+  }
+  
+  .popular-search-item {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-button {
+    height: 45px;
+  }
+  
+  .search-paper {
+    padding: 1.25rem;
+  }
+}
+
+/* Crypto Details Styling */
+.crypto-details-container {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.crypto-details-container h6 {
+  position: relative;
+}
+
+.crypto-details-container h6::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-radius: 3px;
+}
+
+.crypto-details-container .MuiPaper-root {
+  transition: all 0.3s ease;
+}
+
+.crypto-details-container .MuiGrid-item:hover .MuiBox-root {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+/* Enhanced Search Styling */
+.search-paper {
+  padding: 24px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.search-paper-focus {
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 40px rgba(59, 130, 246, 0.15);
+}
+
+.search-input .MuiOutlinedInput-root {
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.search-input-focused .MuiOutlinedInput-root {
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+}
+
+.search-focus-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.ripple-active {
+  opacity: 1;
+  transform: scale(1);
+  border: 2px solid rgba(59, 130, 246, 0.3);
+}
+
+.search-icon {
+  transition: all 0.3s ease;
+}
+
+.search-icon-pulse {
+  animation: iconPulse 2s infinite;
+}
+
+@keyframes iconPulse {
+  0% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+
+.search-button {
+  border-radius: 12px;
+  padding: 12px 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background-image: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
+
+.search-button:disabled {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+.button-hover-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0));
+  transition: all 0.3s ease;
+  transform: translateX(-100%);
+}
+
+.search-button:hover .button-hover-effect {
+  transform: translateX(100%);
+}
+
+.loading-spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.autocomplete-dropdown {
+  animation: dropdownAppear 0.25s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes dropdownAppear {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.recent-searches-dropdown {
+  animation: dropdownAppear 0.25s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.search-suggestions-dropdown {
+  animation: dropdownAppear 0.25s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.positive-change {
+  background-color: rgba(22, 163, 74, 0.1) !important;
+  color: #16a34a !important;
+  border: 1px solid rgba(22, 163, 74, 0.2) !important;
+}
+
+.negative-change {
+  background-color: rgba(220, 38, 38, 0.1) !important;
+  color: #dc2626 !important;
+  border: 1px solid rgba(220, 38, 38, 0.2) !important;
+}
+
+/* Enhanced UI Animations for Customize Prediction Section */
+@keyframes expandWidth {
+  from { width: 40px; }
+  to { width: 100px; }
+}
+
+@keyframes particleFly {
+  0% { 
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% { 
+    transform: translate(var(--x, -100px), var(--y, -100px)); 
+    opacity: 0;
+  }
+}
+
+@keyframes progressGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes pulsating {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Enhanced select animation */
+.enhanced-select-container .MuiSelect-select {
+  transition: all 0.3s ease;
+}
+
+.enhanced-select-container .active-timeframe {
+  animation: subtleGlow 2s infinite alternate;
+}
+
+@keyframes subtleGlow {
+  0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.2); }
+  100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+}
+
+/* Enhanced input animation */
+.input-animate.input-highlight .MuiOutlinedInput-root {
+  animation: inputHighlight 0.7s ease;
+}
+
+@keyframes inputHighlight {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.2); }
+  70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+/* Risk slider animations */
+.risk-slider .MuiSlider-thumb {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.calculate-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.calculate-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0));
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.calculate-button:hover::before {
+  transform: translateX(100%);
+}
+
+.calculate-button.calculate-animate {
+  animation: buttonPulse 0.5s forwards;
+}
+
+@keyframes buttonPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+/* Enhanced selection animations */
+.timeframe-option {
+  transition: all 0.3s ease;
+}
+
+.timeframe-option:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.selected-timeframe {
+  font-weight: 700;
+  color: #3b82f6;
+  position: relative;
+}
+
+.selected-timeframe::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, transparent);
+  animation: expandFromLeft 0.3s forwards;
+}
+
+@keyframes expandFromLeft {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Slider indicators animations */
+.risk-level-1 .MuiSlider-thumb::after,
+.risk-level-2 .MuiSlider-thumb::after,
+.risk-level-3 .MuiSlider-thumb::after {
+  animation: pulseRing 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+@keyframes pulseRing {
+  0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0.8; }
+  50% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(0.7); opacity: 0.8; }
+}
+
+/* Global dark mode styles */
+.dark-mode {
+  color-scheme: dark;
+}
+
+/* App-wide animations */
+@keyframes floatSlow {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-10px) translateX(5px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+@keyframes floatCoin {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes floatElement {
+  0% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(-3deg); }
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.5; left: -100%; }
+  50% { opacity: 1; left: 100%; }
+  100% { opacity: 0.5; left: 100%; }
+}
+
+@keyframes shimmerBg {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes btnShine {
+  0% { transform: translateX(-100%); }
+  20% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes progressBar {
+  0% { left: -30%; }
+  100% { left: 100%; }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  50% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+@keyframes pulseDot {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+@keyframes wave-animation {
+  0% { background-position: 0 bottom; }
+  100% { background-position: 1200px bottom; }
+}
+
+@keyframes wave-animation-reverse {
+  0% { background-position: 1200px bottom; }
+  100% { background-position: 0 bottom; }
+}
+
+@keyframes price-wave {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 0; }
+}
+
+@keyframes floatWithBounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-50px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes fadeAndScale {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Content padding to account for fixed navbar */
+main {
+  padding-top: 64px;
+}
+
+/* Ensure content has proper padding on mobile */
+@media (max-width: 600px) {
+  main {
+    padding-top: 56px;
+  }
+}

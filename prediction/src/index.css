@@ -1,0 +1,1498 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add these styles to ensure proper centering */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f7fa;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Add ripple animation for interactive elements */
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Add animation for the header light rays */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Wave animation */
+@keyframes wave-animation {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes wave-animation-reverse {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes price-wave {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 100px;
+  }
+}
+
+/* Floating animation for crypto elements */
+@keyframes floatCoin {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes floatElement {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-15px, -15px);
+  }
+}
+
+@keyframes floatWithBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100%);
+  }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide up animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button shine effect */
+@keyframes btnShine {
+  0% {
+    transform: translateX(-100%);
+  }
+  20%, 100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Animation for shimmer effects */
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmerBg {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Progress bar animation */
+@keyframes progressBar {
+  0% {
+    width: 10%;
+    left: 0%;
+  }
+  50% {
+    width: 30%;
+  }
+  100% {
+    width: 10%;
+    left: 90%;
+  }
+}
+
+/* Animation for expanding width */
+@keyframes expandWidth {
+  from {
+    width: 40px;
+  }
+  to {
+    width: 80px;
+  }
+}
+
+/* Animation for calculation button */
+@keyframes particleFly {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px) translateX(15px);
+    opacity: 0;
+  }
+}
+
+/* Animation for fading and scaling */
+@keyframes fadeAndScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation for sliding in from bottom */
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom scrollbar for a better UX */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.7);
+}
+
+/* Light mode & dark mode text colors */
+.dark-mode .MuiTypography-root {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .MuiTypography-colorTextSecondary {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Button styling */
+.search-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-hover-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.search-button:hover .button-hover-effect {
+  opacity: 1;
+}
+
+/* Fix chart colors */
+.dark-mode .recharts-text {
+  fill: rgba(255, 255, 255, 0.8);
+}
+
+.dark-mode .recharts-cartesian-grid-horizontal line,
+.dark-mode .recharts-cartesian-grid-vertical line {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+/* Enhance Paper components in dark mode */
+.dark-mode .MuiPaper-root {
+  background-color: rgba(30, 41, 59, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Fix input text color in dark mode */
+.dark-mode .MuiInputBase-input {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* App Container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3rem;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.app-container * {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+/* App Header */
+.app-header {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  color: white;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+/* App Logo */
+.app-logo {
+  font-weight: 700 !important;
+  letter-spacing: -0.5px;
+  text-align: center;
+  color: white;
+}
+
+.app-logo span {
+  color: #3b82f6;
+}
+
+/* Search Component */
+.search-paper {
+  padding: 2.5rem;
+  border-radius: 16px !important;
+  background-color: white !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.search-paper-focus {
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+/* Search Focus Ripple Effect */
+.search-focus-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.01) 70%, transparent 100%);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ripple-active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Animated Loading Button */
+.search-button-loading {
+  background: linear-gradient(270deg, #3b82f6, #8b5cf6, #3b82f6) !important;
+  background-size: 200% 100% !important;
+  animation: gradientMove 2s ease infinite !important;
+}
+
+.loading-spinner-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Button hover effect */
+.button-hover-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.search-button:hover .button-hover-effect {
+  transform: translateX(100%);
+}
+
+/* Enhanced Price Chart Container */
+.price-chart-container {
+  position: relative;
+  height: 60px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.price-chart-line {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #cbd5e1, #3b82f6);
+  animation: lineGrow 2s cubic-bezier(0.37, 0, 0.63, 1) forwards;
+}
+
+@keyframes lineGrow {
+  0% { width: 0; }
+  100% { width: 90%; }
+}
+
+.price-chart-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3b82f6;
+  top: calc(50% - 4px);
+  opacity: 0;
+}
+
+.dot1 {
+  left: 25%;
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.dot2 {
+  left: 50%;
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: 1s;
+}
+
+.dot3 {
+  left: 75%;
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: 1.5s;
+}
+
+.current-dot {
+  left: 90%;
+  width: 12px;
+  height: 12px;
+  top: calc(50% - 6px);
+  background: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  animation: pulse 2s infinite, fadeIn 0.5s forwards;
+  animation-delay: 0s, 1.8s;
+}
+
+/* Results Glow Effect */
+.results-glow-effect {
+  animation: glowPulse 2s forwards;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 0 rgba(59, 130, 246, 0); }
+  50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.3); }
+  100% { box-shadow: 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+/* Button icon animations */
+.button-icon-animate {
+  animation: pulse 2s infinite;
+}
+
+/* Animated results icons */
+.results-icon-animate {
+  animation: pulse 2s infinite;
+}
+
+/* Confidence chip animation */
+.confidence-chip {
+  animation: pulse 2s infinite;
+}
+
+/* Info icon pulse */
+.info-icon-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Card icon pulse */
+.card-icon-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Price animate */
+.price-animate {
+  animation: pulse 2s infinite;
+}
+
+/* Trend icon */
+.trend-icon {
+  animation: pulse 2s infinite;
+}
+
+.search-title {
+  font-weight: 700 !important;
+  margin-bottom: 1.5rem !important;
+  text-align: center;
+  color: #2d3748;
+}
+
+.search-input {
+  border-radius: 12px !important;
+  padding: 0.5rem 1rem !important;
+  position: relative;
+  transition: all 0.3s ease !important;
+}
+
+.search-input .MuiOutlinedInput-notchedOutline {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.search-input:focus-within .MuiOutlinedInput-notchedOutline {
+  border-color: #3b82f6 !important;
+  border-width: 2px !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.search-icon {
+  animation: pulse 2s infinite ease-in-out;
+  color: #3b82f6 !important;
+}
+
+.autocomplete-dropdown {
+  transform-origin: top center;
+  animation: dropdownAppear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+@keyframes dropdownAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.autocomplete-option {
+  transition: all 0.2s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.autocomplete-option:hover, .autocomplete-option.highlighted {
+  background-color: rgba(59, 130, 246, 0.08) !important;
+}
+
+.autocomplete-option:hover .option-arrow {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.autocomplete-option:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.autocomplete-option:last-child:after {
+  display: none;
+}
+
+.option-logo {
+  transition: transform 0.3s ease !important;
+}
+
+.autocomplete-option:hover .option-logo {
+  transform: scale(1.1);
+}
+
+.option-arrow {
+  transform: translateX(-10px);
+  opacity: 0;
+  transition: all 0.3s ease !important;
+}
+
+.search-button {
+  border-radius: 12px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  transition: all 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.search-button:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: all 0.8s ease;
+}
+
+.search-button:hover:not(:disabled):after {
+  left: 100%;
+}
+
+.search-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3) !important;
+}
+
+.search-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.search-button:hover {
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+  transform: translateY(-2px);
+}
+
+/* Results Container */
+.results-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animation for fallback motion elements */
+.header-animation {
+  animation-fill-mode: forwards;
+}
+
+.subheader-animation {
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
+}
+
+/* Floating elements in header - improved for fallback */
+.header-floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.2;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.circle1 {
+  width: 150px;
+  height: 150px;
+  top: -50px;
+  right: 10%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.circle2 {
+  width: 100px;
+  height: 100px;
+  bottom: -40px;
+  left: 15%;
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.floating-element {
+  position: absolute;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+}
+
+.coin1 {
+  top: 20%;
+  right: 20%;
+  animation: floatWithRotate 10s ease-in-out infinite;
+}
+
+.coin2 {
+  bottom: 30%;
+  left: 25%;
+  animation: floatWithRotate 8s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.chart-icon {
+  bottom: 25%;
+  right: 30%;
+  color: rgba(255, 255, 255, 0.6);
+  animation: float 7s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+/* Cryptocurrency Result Card */
+.crypto-result-card {
+  padding: 2rem;
+  border-radius: 16px !important;
+  background-color: white !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid #e2e8f0;
+}
+
+.crypto-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.crypto-info-section {
+  display: flex;
+  align-items: center;
+}
+
+.crypto-logo {
+  border-radius: 50%;
+  background-color: white;
+  padding: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.crypto-name {
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+  color: #2d3748;
+}
+
+.symbol-chip {
+  background-color: #edf2f7 !important;
+  color: #4a5568 !important;
+  font-weight: 600 !important;
+}
+
+.positive-change {
+  background-color: rgba(34, 197, 94, 0.1) !important;
+  color: #22c55e !important;
+  font-weight: 600 !important;
+}
+
+.negative-change {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  color: #ef4444 !important;
+  font-weight: 600 !important;
+}
+
+.crypto-price {
+  font-weight: 700 !important;
+  color: #2d3748;
+  text-align: right;
+}
+
+.crypto-stat {
+  padding: 1rem;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  height: 100%;
+}
+
+/* Prediction Inputs Card */
+.prediction-inputs-card {
+  padding: 2rem;
+  border-radius: 16px !important;
+  background-color: white !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid #e2e8f0;
+}
+
+/* Prediction Results Card */
+.prediction-results-card {
+  padding: 2rem;
+  border-radius: 16px !important;
+  background-color: white !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid #e2e8f0;
+  animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.prediction-summary {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.prediction-details {
+  margin-bottom: 2rem;
+}
+
+.prediction-detail-card {
+  padding: 1.5rem;
+  border-radius: 12px !important;
+  background-color: #f8fafc !important;
+  text-align: center;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.prediction-detail-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.prediction-detail-card.predicted {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(37, 99, 235, 0.1) 100%) !important;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.prediction-detail-card.optimistic {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(21, 128, 61, 0.1) 100%) !important;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.prediction-detail-card.pessimistic {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(185, 28, 28, 0.1) 100%) !important;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.investment-projection {
+  margin-top: 2rem;
+}
+
+.projection-card {
+  padding: 1.5rem;
+  border-radius: 12px !important;
+  background-color: #f8fafc !important;
+  text-align: center;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.projection-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Enhanced Result Animations */
+.animate-slide-in-bottom {
+  animation: slideInBottom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced Responsive Behaviors */
+@media screen and (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .app-header {
+    padding: 1.5rem 0;
+  }
+  
+  .search-paper {
+    padding: 1.5rem !important;
+  }
+  
+  .tagline-text {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* Accessibility improvements */
+:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.dark-mode :focus {
+  outline-color: #60a5fa;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles for predictions */
+@media print {
+  .app-header, 
+  .search-paper,
+  .info-banner {
+    display: none !important;
+  }
+  
+  .prediction-results-card {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+  
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  .crypto-result-card,
+  .prediction-inputs-card {
+    page-break-inside: avoid;
+  }
+  
+  .prediction-results-card {
+    page-break-before: always;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .search-paper, 
+  .crypto-result-card, 
+  .prediction-inputs-card, 
+  .prediction-results-card {
+    padding: 1.5rem;
+  }
+  
+  .crypto-header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .crypto-price-section {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .crypto-price {
+    text-align: left;
+  }
+  
+  .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .autocomplete-dropdown {
+    max-height: 50vh;
+  }
+  
+  .search-button {
+    padding: 0.75rem 1rem !important;
+  }
+  
+  .autocomplete-option .MuiListItemText-secondary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* Dark Mode Styles - Enhanced */
+.dark-mode {
+  background-color: #121212;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.dark-mode .app-header {
+  background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+}
+
+/* Paper components in dark mode */
+.dark-mode .MuiPaper-root {
+  background-color: #1e293b !important;
+  color: rgba(255, 255, 255, 0.87);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark-mode .crypto-result-card,
+.dark-mode .prediction-inputs-card,
+.dark-mode .prediction-results-card {
+  background-color: #1e293b !important;
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Fix stat cards background in dark mode */
+.dark-mode .crypto-stat {
+  background-color: rgba(15, 23, 42, 0.6) !important;
+}
+
+.dark-mode .prediction-detail-card {
+  background-color: rgba(15, 23, 42, 0.6) !important;
+}
+
+.dark-mode .prediction-detail-card.predicted {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.2) 100%) !important;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.dark-mode .prediction-detail-card.optimistic {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(21, 128, 61, 0.2) 100%) !important;
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.dark-mode .prediction-detail-card.pessimistic {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(185, 28, 28, 0.2) 100%) !important;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Fix form elements */
+.dark-mode .MuiInputBase-root {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.dark-mode .MuiTextField-root,
+.dark-mode .MuiSelect-root,
+.dark-mode .MuiOutlinedInput-root {
+  background-color: rgba(15, 23, 42, 0.4);
+  border-radius: 10px;
+}
+
+.dark-mode .MuiFormControl-root .MuiInputLabel-root {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Fix chip backgrounds */
+.dark-mode .symbol-chip {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+.dark-mode .positive-change {
+  background-color: rgba(34, 197, 94, 0.15) !important;
+  color: #4ade80 !important;
+}
+
+.dark-mode .negative-change {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  color: #f87171 !important;
+}
+
+/* Fix slider */
+.dark-mode .MuiSlider-rail {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .MuiSlider-track {
+  background-color: #3b82f6;
+}
+
+.dark-mode .MuiSlider-thumb {
+  background-color: #3b82f6;
+}
+
+/* Fix typography and text colors */
+.dark-mode .crypto-name {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.dark-mode .crypto-price {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.dark-mode .search-title {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Fix investment slider */
+.dark-mode .investment-input {
+  background-color: rgba(15, 23, 42, 0.4);
+}
+
+/* Fix background for dropdown items */
+.dark-mode .MuiListItem-root.Mui-selected,
+.dark-mode .MuiMenuItem-root.Mui-selected {
+  background-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+.dark-mode .timeframe-option {
+  background-color: transparent;
+}
+
+/* Search specific fixes */
+.dark-mode .search-input-focused {
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
+}
+
+.dark-mode .search-paper {
+  background-color: rgba(30, 41, 59, 0.7) !important;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark-mode .search-paper.search-paper-focus {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3) !important;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Alert styling */
+.dark-mode .MuiAlert-root {
+  background-color: rgba(30, 41, 59, 0.7) !important;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.dark-mode .MuiAlert-root.MuiAlert-standardInfo {
+  border-left: 4px solid #3b82f6;
+}
+
+.dark-mode .MuiAlert-root.MuiAlert-standardError {
+  border-left: 4px solid #ef4444;
+}
+
+.dark-mode .MuiAlert-root.MuiAlert-standardWarning {
+  border-left: 4px solid #f59e0b;
+}
+
+.dark-mode .MuiAlert-root.MuiAlert-standardSuccess {
+  border-left: 4px solid #10b981;
+}
+
+/* Enhanced select dropdown style fixes */
+.dark-mode .MuiSelect-icon {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode .MuiPopover-paper,
+.dark-mode .MuiMenu-paper {
+  background-color: #1a1a2e !important;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Fix autocompletion dropdown */
+.dark-mode .autocomplete-dropdown {
+  background-color: #1a1a2e !important;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark-mode .autocomplete-option:hover {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+}
+
+/* Divider color in dark mode */
+.dark-mode .MuiDivider-root {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Box shadow fix for cards in dark mode */
+.dark-mode .search-button {
+  background: linear-gradient(90deg, #3b82f6, #4f46e5) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark-mode .search-button:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Card animations in dark mode */
+.dark-mode .prediction-detail-card:hover,
+.dark-mode .projection-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Autocomplete and search suggestions */
+.dark-mode .search-categories-dropdown,
+.dark-mode .recent-searches-dropdown,
+.dark-mode .autocomplete-dropdown {
+  background-color: #1a1a2e !important;
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .suggestion-item {
+  background-color: rgba(30, 41, 59, 0.7) !important;
+}
+
+.dark-mode .suggestion-item:hover {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+}
+
+/* Category chips in dark mode */
+.dark-mode .category-chip {
+  background-color: rgba(30, 41, 59, 0.7) !important;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .category-chip.active-category {
+  background: linear-gradient(90deg, #3b82f6, #6366f1) !important;
+}
+
+/* Helper text colors */
+.dark-mode .MuiFormHelperText-root {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Fix for skeleton in dark mode */
+.dark-mode .MuiSkeleton-root {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Tooltip styling in dark mode */
+.dark-mode .MuiTooltip-tooltip {
+  background-color: #1a1a2e !important;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: rgba(255, 255, 255, 0.87);
+}
+
+/* Market heatmap dark mode fixes */
+.dark-mode .heatmap-container {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%) !important;
+}
+
+/* Price comparison dark mode fixes */
+.dark-mode .price-comparison-wrapper {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.dark-mode .compare-coin-card {
+  background-color: rgba(30, 41, 59, 0.4) !important;
+}
+
+/* Fix scrollbar colors in dark mode */
+.dark-mode .modern-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .modern-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .modern-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Footer dark mode style */
+.dark-mode footer {
+  background-color: #121212 !important;
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Add dynamic animations */
+@keyframes floatElement {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.4)); }
+  50% { filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.7)); }
+}
+
+@keyframes shimmerBg {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes slideFadeIn {
+  0% { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expandWidth {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes rotateSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeAndScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Enhanced prediction chart specific animations */
+.price-change-chart {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.price-change-chart:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.price-change-chart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, 
+    rgba(59, 130, 246, 0.15), 
+    transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.price-change-chart:hover::before {
+  opacity: 1;
+}
+
+/* Progressive highlight effect on hover */
+.price-change-chart::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, 
+    rgba(59, 130, 246, 0.3), 
+    rgba(139, 92, 246, 0.5));
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.5s ease;
+  z-index: 2;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.price-change-chart:hover::after {
+  transform: scaleX(1);
+}
+
+/* Tooltip hover animation */
+.price-change-chart:hover .tooltip {
+  animation: fadeAndScale 0.3s forwards;
+}
+
+/* Responsive chart sizing */
+@media (max-width: 768px) {
+  .price-change-chart {
+    height: 180px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .price-change-chart {
+    height: 160px !important;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none !important;
+}
+
+a, button, [role="button"] {
+  cursor: none !important;
+}
+
+/* For mobile devices, restore default cursor */
+@media (max-width: 768px) {
+  * {
+    cursor: auto !important;
+  }
+}
+
+/* Navbar styles */
+.MuiAppBar-root {
+  background: rgba(17, 17, 17, 0.95) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode specific styles */
+.dark-mode .MuiAppBar-root {
+  background: rgba(17, 17, 17, 0.95) !important;
+}
+
+/* Cursor styles */
+* {
+  cursor: none !important;
+}
+
+@media (max-width: 768px) {
+  * {
+    cursor: auto !important;
+  }
+  
+  .MuiAppBar-root {
+    background: rgb(17, 17, 17) !important;
+  }
+}
