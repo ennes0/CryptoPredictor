@@ -23,6 +23,7 @@ import {
   Alert,
   AlertTitle,
   Menu,
+  MenuItem,
   useTheme
 } from '@mui/material';
 import {
@@ -36,7 +37,11 @@ import {
   Analytics,
   Person,
   Settings,
-  Logout
+  Logout,
+  ArrowUpward,
+  ArrowDownward,
+  StarBorder,
+  InfoOutlined
 } from '@mui/icons-material';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -46,6 +51,7 @@ import './components/Navbar.css';
 
 // Import local components
 import SimpleAnimatedNumber from './SimpleAnimatedNumber';
+import AnimatedNumber from './components/AnimatedNumber'; // Add this import
 import PriceHistoryChart from './components/PriceHistoryChart';
 import TweetFeed from './components/TweetFeed';
 
@@ -142,6 +148,15 @@ function App() {
   const [calculationStarted, setCalculationStarted] = useState(false);
   const [searchInProgress, setSearchInProgress] = useState(false);
   const [cryptoList, setCryptoList] = useState([]);
+  const [isFullyLoaded, setIsFullyLoaded] = useState(false);
+  const [chartAnimationComplete, setChartAnimationComplete] = useState(false);
+  const [highlightedMetric, setHighlightedMetric] = useState(null);
+  const [activeTimeframe, setActiveTimeframe] = useState('7d');
+  const [inputAnimation, setInputAnimation] = useState(false);
+  
+  // Add missing state variables
+  const [selectedCryptoSymbol, setSelectedCryptoSymbol] = useState(null);
+  const [debugLog, setDebugLog] = useState([]);
 
   // State for enhanced search features
   const [recentSearches, setRecentSearches] = useState([]);
@@ -2272,293 +2287,293 @@ function App() {
                             </Grid>
 
                             {/* Investment Analysis */}
-                            <Grid item xs={12}>
+                            <Grid item xs={12} md={4}>
                               <Box sx={{
                                 p: 3,
                                 borderRadius: '16px',
                                 background: isDarkMode ? 'rgba(245, 158, 11, 0.1)' : 'rgba(245, 158, 11, 0.05)',
                                 border: '1px solid',
                                 borderColor: isDarkMode ? 'rgba(245, 158, 11, 0.2)' : 'rgba(245, 158, 11, 0.1)',
-                                mt: 2
+                                height: '100%',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                '&:hover': {
+                                  transform: 'translateY(-2px)',
+                                  transition: 'transform 0.3s ease'
+                                }
                               }}>
-                                <Typography variant="h6" sx={{ 
-                                  mb: 3, 
-                                  fontWeight: 600,
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  gap: 1
-                                }}>
-                                  <Calculate sx={{ color: 'warning.main' }} />
-                                  Investment Analysis
+                                <Box sx={{
+                                  position: 'absolute',
+                                  top: 0,
+                                  right: 0,
+                                  width: '100px',
+                                  height: '100px',
+                                  background: 'radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0) 70%)',
+                                  borderRadius: '50%',
+                                  transform: 'translate(50%, -50%)'
+                                }} />
+                                <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                                  Investment Amount
                                 </Typography>
-                                <Grid container spacing={3}>
-                                  <Grid item xs={12} md={4}>
-                                    <Box sx={{ 
-                                      textAlign: 'center', 
-                                      p: 2,
-                                      borderRadius: '12px',
-                                      background: isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
-                                      height: '100%',
-                                      display: 'flex',
-                                      flexDirection: 'column',
-                                      justifyContent: 'center',
-                                      '&:hover': {
-                                        transform: 'translateY(-2px)',
-                                        transition: 'transform 0.3s ease'
-                                      }
-                                    }}>
-                                      <Box component="span" className="material-icons-outlined" sx={{ 
-                                        color: 'warning.main',
-                                        fontSize: 32,
-                                        mb: 1
-                                      }}>
-                                        account_balance_wallet
-                                      </Box>
-                                      <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                                        Investment Amount
-                                      </Typography>
-                                      <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
-                                        ${investmentAmount.toLocaleString()}
-                                      </Typography>
-                                      <Typography variant="body2" color="text.secondary">
-                                        Initial investment
-                                      </Typography>
-                                    </Box>
-                                  </Grid>
-                                  <Grid item xs={12} md={4}>
-                                    <Box sx={{ 
-                                      textAlign: 'center', 
-                                      p: 2,
-                                      borderRadius: '12px',
-                                      background: isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
-                                      height: '100%',
-                                      display: 'flex',
-                                      flexDirection: 'column',
-                                      justifyContent: 'center',
-                                      '&:hover': {
-                                        transform: 'translateY(-2px)',
-                                        transition: 'transform 0.3s ease'
-                                      }
-                                    }}>
-                                      <Box component="span" className="material-icons-outlined" sx={{ 
-                                        color: predictionData.potentialReturn > 0 ? 'success.main' : 'error.main',
-                                        fontSize: 32,
-                                        mb: 1
-                                      }}>
-                                        {predictionData.potentialReturn > 0 ? 'trending_up' : 'trending_down'}
-                                      </Box>
-                                      <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                                        Potential Return
-                                      </Typography>
-                                      <Typography 
-                                        variant="h5" 
-                                        sx={{ 
-                                          fontWeight: 700, 
-                                          mb: 1,
-                                          color: predictionData.potentialReturn > 0 ? 'success.main' : 'error.main'
-                                        }}
-                                      >
-                                        ${Math.abs(predictionData.potentialReturn).toLocaleString()}
-                                      </Typography>
-                                      <Typography 
-                                        variant="body2" 
-                                        sx={{ 
-                                          color: predictionData.potentialReturn > 0 ? 'success.main' : 'error.main'
-                                        }}
-                                      >
-                                        {predictionData.potentialReturn > 0 ? 'Profit' : 'Loss'}
-                                      </Typography>
-                                    </Box>
-                                  </Grid>
-                                  <Grid item xs={12} md={4}>
-                                    <Box sx={{ 
-                                      textAlign: 'center', 
-                                      p: 2,
-                                      borderRadius: '12px',
-                                      background: isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
-                                      height: '100%',
-                                      display: 'flex',
-                                      flexDirection: 'column',
-                                      justifyContent: 'center',
-                                      '&:hover': {
-                                        transform: 'translateY(-2px)',
-                                        transition: 'transform 0.3s ease'
-                                      }
-                                    }}>
-                                      <Box component="span" className="material-icons-outlined" sx={{ 
-                                        color: predictionData.potentialROI > 0 ? 'success.main' : 'error.main',
-                                        fontSize: 32,
-                                        mb: 1
-                                      }}>
-                                        {predictionData.potentialROI > 0 ? 'percent' : 'trending_down'}
-                                      </Box>
-                                      <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                                        ROI
-                                      </Typography>
-                                      <Typography 
-                                        variant="h5" 
-                                        sx={{ 
-                                          fontWeight: 700, 
-                                          mb: 1,
-                                          color: predictionData.potentialROI > 0 ? 'success.main' : 'error.main'
-                                        }}
-                                      >
-                                        {predictionData.potentialROI}%
-                                      </Typography>
-                                      <Typography 
-                                        variant="body2" 
-                                        sx={{ 
-                                          color: predictionData.potentialROI > 0 ? 'success.main' : 'error.main'
-                                        }}
-                                      >
-                                        Return on Investment
-                                      </Typography>
-                                    </Box>
-                                  </Grid>
-                                </Grid>
+                                <Typography variant="h4" sx={{ 
+                                  fontWeight: 700, 
+                                  mb: 1
+                                }}>
+                                  ${investmentAmount.toLocaleString()}
+                                </Typography>
+                                <Divider sx={{ borderColor: 'rgba(255,255,255,0.2)', my: 1 }} />
+                                <Button
+                                  variant="outlined"
+                                  size="small"
+                                  onClick={() => setInvestmentAmount(1000)}
+                                  sx={{
+                                    borderColor: 'white',
+                                    color: 'white',
+                                    borderRadius: '8px',
+                                    py: 1,
+                                    '&:hover': {
+                                      borderColor: 'rgba(255,255,255,0.7)',
+                                      backgroundColor: 'rgba(255,255,255,0.1)',
+                                    }
+                                  }}
+                                >
+                                  Set to $1000
+                                </Button>
                               </Box>
                             </Grid>
-
-                            {/* Market Analysis */}
-                            <Grid item xs={12}>
+                            <Grid item xs={12} md={4}>
                               <Box sx={{
                                 p: 3,
                                 borderRadius: '16px',
-                                background: isDarkMode ? 'rgba(99, 102, 241, 0.1)' : 'rgba(99, 102, 241, 0.05)',
+                                background: isDarkMode ? 'rgba(16, 185, 129, 0.1)' : 'rgba(16, 185, 129, 0.05)',
                                 border: '1px solid',
-                                borderColor: isDarkMode ? 'rgba(99, 102, 241, 0.2)' : 'rgba(99, 102, 241, 0.1)',
-                                mt: 2
+                                borderColor: isDarkMode ? 'rgba(16, 185, 129, 0.2)' : 'rgba(16, 185, 129, 0.1)',
+                                height: '100%',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                '&:hover': {
+                                  transform: 'translateY(-2px)',
+                                  transition: 'transform 0.3s ease'
+                                }
                               }}>
-                                <Typography variant="h6" sx={{ 
-                                  mb: 3, 
-                                  fontWeight: 600,
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  gap: 1
-                                }}>
-                                  <Analytics sx={{ color: 'secondary.main' }} />
-                                  Market Analysis
+                                <Box sx={{
+                                  position: 'absolute',
+                                  top: 0,
+                                  right: 0,
+                                  width: '100px',
+                                  height: '100px',
+                                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0) 70%)',
+                                  borderRadius: '50%',
+                                  transform: 'translate(50%, -50%)'
+                                }} />
+                                <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                                  Potential Return
                                 </Typography>
-                                <Grid container spacing={3}>
-                                  <Grid item xs={12} md={6}>
-                                    <Box sx={{ p: 2 }}>
-                                      <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                                        Market Sentiment
-                                      </Typography>
-                                      <Box sx={{ 
-                                        display: 'flex', 
-                                        alignItems: 'center', 
-                                        gap: 2,
-                                        mt: 1
-                                      }}>
-                                        <Box sx={{
-                                          p: 2,
-                                          borderRadius: '12px',
-                                          background: predictionData.marketSentiment === 'Bullish' ? 
-                                            'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-                                          border: '1px solid',
-                                          borderColor: predictionData.marketSentiment === 'Bullish' ? 
-                                            'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)',
-                                          display: 'flex',
-                                          alignItems: 'center',
-                                          gap: 1,
-                                          flex: 1,
-                                          '&:hover': {
-                                            transform: 'translateY(-2px)',
-                                            transition: 'transform 0.3s ease'
-                                          }
-                                        }}>
-                                          <Box component="span" className="material-icons-outlined" sx={{ 
-                                            color: predictionData.marketSentiment === 'Bullish' ? 'success.main' : 'error.main',
-                                            fontSize: 24
-                                          }}>
-                                            {predictionData.marketSentiment === 'Bullish' ? 'trending_up' : 'trending_down'}
-                                          </Box>
-                                          <Typography 
-                                            variant="h6" 
-                                            sx={{ 
-                                              color: predictionData.marketSentiment === 'Bullish' ? 'success.main' : 'error.main',
-                                              fontWeight: 600
-                                            }}
-                                          >
-                                            {predictionData.marketSentiment}
-                                          </Typography>
-                                        </Box>
-                                      </Box>
-                                    </Box>
-                                  </Grid>
-                                  <Grid item xs={12} md={6}>
-                                    <Box sx={{ p: 2 }}>
-                                      <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                                        Price Range
-                                      </Typography>
-                                      <Box sx={{ 
-                                        display: 'flex', 
-                                        alignItems: 'center', 
-                                        gap: 2,
-                                        mt: 1
-                                      }}>
-                                        <Box sx={{
-                                          p: 2,
-                                          borderRadius: '12px',
-                                          background: 'rgba(16, 185, 129, 0.1)',
-                                          border: '1px solid',
-                                          borderColor: 'rgba(16, 185, 129, 0.2)',
-                                          flex: 1,
-                                          '&:hover': {
-                                            transform: 'translateY(-2px)',
-                                            transition: 'transform 0.3s ease'
-                                          }
-                                        }}>
-                                          <Typography variant="body2" color="text.secondary" gutterBottom>
-                                            Optimistic
-                                          </Typography>
-                                          <Typography variant="h6" sx={{ color: 'success.main', fontWeight: 600 }}>
-                                            ${predictionData.optimisticPrice.toLocaleString()}
-                                          </Typography>
-                                        </Box>
-                                        <Box sx={{
-                                          p: 2,
-                                          borderRadius: '12px',
-                                          background: 'rgba(239, 68, 68, 0.1)',
-                                          border: '1px solid',
-                                          borderColor: 'rgba(239, 68, 68, 0.2)',
-                                          flex: 1,
-                                          '&:hover': {
-                                            transform: 'translateY(-2px)',
-                                            transition: 'transform 0.3s ease'
-                                          }
-                                        }}>
-                                          <Typography variant="body2" color="text.secondary" gutterBottom>
-                                            Pessimistic
-                                          </Typography>
-                                          <Typography variant="h6" sx={{ color: 'error.main', fontWeight: 600 }}>
-                                            ${predictionData.pessimisticPrice.toLocaleString()}
-                                          </Typography>
-                                        </Box>
-                                      </Box>
-                                    </Box>
-                                  </Grid>
-                                </Grid>
+                                <Typography 
+                                  variant="h4" 
+                                  sx={{ 
+                                    fontWeight: 700, 
+                                    mb: 1,
+                                    color: predictionData.potentialReturn > 0 ? 'success.main' : 'error.main'
+                                  }}
+                                >
+                                  ${Math.abs(predictionData.potentialReturn).toLocaleString()}
+                                </Typography>
+                                <Divider sx={{ borderColor: 'rgba(255,255,255,0.2)', my: 1 }} />
+                                <Button
+                                  variant="outlined"
+                                  size="small"
+                                  onClick={() => setRiskLevel(2)}
+                                  sx={{
+                                    borderColor: 'white',
+                                    color: 'white',
+                                    borderRadius: '8px',
+                                    py: 1,
+                                    '&:hover': {
+                                      borderColor: 'rgba(255,255,255,0.7)',
+                                      backgroundColor: 'rgba(255,255,255,0.1)',
+                                    }
+                                  }}
+                                >
+                                  Set Risk Level 2
+                                </Button>
                               </Box>
                             </Grid>
-
-                            {/* Disclaimer */}
-                            <Grid item xs={12}>
-                              <Alert 
-                                severity="info" 
-                                sx={{ 
-                                  mt: 2,
-                                  borderRadius: '12px',
-                                  '& .MuiAlert-icon': {
-                                    color: 'primary.main'
-                                  }
-                                }}
-                              >
-                                <AlertTitle>Disclaimer</AlertTitle>
-                                This prediction is based on historical data and market analysis. Cryptocurrency markets are highly volatile and predictions should not be considered as financial advice. Always do your own research before making investment decisions.
-                              </Alert>
+                            <Grid item xs={12} md={4}>
+                              <Box sx={{
+                                p: 3,
+                                borderRadius: '16px',
+                                background: isDarkMode ? 'rgba(59, 130, 246, 0.1)' : 'rgba(59, 130, 246, 0.05)',
+                                border: '1px solid',
+                                borderColor: isDarkMode ? 'rgba(59, 130, 246, 0.2)' : 'rgba(59, 130, 246, 0.1)',
+                                height: '100%',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                '&:hover': {
+                                  transform: 'translateY(-2px)',
+                                  transition: 'transform 0.3s ease'
+                                }
+                              }}>
+                                <Box sx={{
+                                  position: 'absolute',
+                                  top: 0,
+                                  right: 0,
+                                  width: '100px',
+                                  height: '100px',
+                                  background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0) 70%)',
+                                  borderRadius: '50%',
+                                  transform: 'translate(50%, -50%)'
+                                }} />
+                                <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                                  Market Sentiment
+                                </Typography>
+                                <Typography variant="h4" sx={{ 
+                                  fontWeight: 700, 
+                                  mb: 1,
+                                  color: predictionData.marketSentiment === 'Bullish' ? 'success.main' : 'error.main'
+                                }}>
+                                  {predictionData.marketSentiment}
+                                </Typography>
+                                <Divider sx={{ borderColor: 'rgba(255,255,255,0.2)', my: 1 }} />
+                                <Button
+                                  variant="outlined"
+                                  size="small"
+                                  onClick={() => setActiveTimeframe('30d')}
+                                  sx={{
+                                    borderColor: 'white',
+                                    color: 'white',
+                                    borderRadius: '8px',
+                                    py: 1,
+                                    '&:hover': {
+                                      borderColor: 'rgba(255,255,255,0.7)',
+                                      backgroundColor: 'rgba(255,255,255,0.1)',
+                                    }
+                                  }}
+                                >
+                                  View 30-Day Trend
+                                </Button>
+                              </Box>
                             </Grid>
+                          </Grid>
+
+                          {/* Market Analysis */}
+                          <Grid container spacing={3}>
+                            <Grid item xs={12} md={6}>
+                              <Box sx={{ p: 2 }}>
+                                <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                                  Market Sentiment
+                                </Typography>
+                                <Box sx={{ 
+                                  display: 'flex', 
+                                  alignItems: 'center', 
+                                  gap: 2,
+                                  mt: 1
+                                }}>
+                                  <Box sx={{
+                                    p: 2,
+                                    borderRadius: '12px',
+                                    background: predictionData.marketSentiment === 'Bullish' ? 
+                                      'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                                    border: '1px solid',
+                                    borderColor: predictionData.marketSentiment === 'Bullish' ? 
+                                      'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 1,
+                                    flex: 1,
+                                    '&:hover': {
+                                      transform: 'translateY(-2px)',
+                                      transition: 'transform 0.3s ease'
+                                    }
+                                  }}>
+                                    <Box component="span" className="material-icons-outlined" sx={{ 
+                                      color: predictionData.marketSentiment === 'Bullish' ? 'success.main' : 'error.main',
+                                      fontSize: 24
+                                    }}>
+                                      {predictionData.marketSentiment === 'Bullish' ? 'trending_up' : 'trending_down'}
+                                    </Box>
+                                    <Typography 
+                                      variant="h6" 
+                                      sx={{ 
+                                        color: predictionData.marketSentiment === 'Bullish' ? 'success.main' : 'error.main',
+                                        fontWeight: 600
+                                      }}
+                                    >
+                                      {predictionData.marketSentiment}
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Grid>
+                            <Grid item xs={12} md={6}>
+                              <Box sx={{ p: 2 }}>
+                                <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                                  Price Range
+                                </Typography>
+                                <Box sx={{ 
+                                  display: 'flex', 
+                                  alignItems: 'center', 
+                                  gap: 2,
+                                  mt: 1
+                                }}>
+                                  <Box sx={{
+                                    p: 2,
+                                    borderRadius: '12px',
+                                    background: 'rgba(16, 185, 129, 0.1)',
+                                    border: '1px solid',
+                                    borderColor: 'rgba(16, 185, 129, 0.2)',
+                                    flex: 1,
+                                    '&:hover': {
+                                      transform: 'translateY(-2px)',
+                                      transition: 'transform 0.3s ease'
+                                    }
+                                  }}>
+                                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                                      Optimistic
+                                    </Typography>
+                                    <Typography variant="h6" sx={{ color: 'success.main', fontWeight: 600 }}>
+                                      ${predictionData.optimisticPrice.toLocaleString()}
+                                    </Typography>
+                                  </Box>
+                                  <Box sx={{
+                                    p: 2,
+                                    borderRadius: '12px',
+                                    background: 'rgba(239, 68, 68, 0.1)',
+                                    border: '1px solid',
+                                    borderColor: 'rgba(239, 68, 68, 0.2)',
+                                    flex: 1,
+                                    '&:hover': {
+                                      transform: 'translateY(-2px)',
+                                      transition: 'transform 0.3s ease'
+                                    }
+                                  }}>
+                                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                                      Pessimistic
+                                    </Typography>
+                                    <Typography variant="h6" sx={{ color: 'error.main', fontWeight: 600 }}>
+                                      ${predictionData.pessimisticPrice.toLocaleString()}
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </Box>
+                            </Grid>
+                          </Grid>
+
+                          {/* Disclaimer */}
+                          <Grid item xs={12}>
+                            <Alert 
+                              severity="info" 
+                              sx={{ 
+                                mt: 2,
+                                borderRadius: '12px',
+                                '& .MuiAlert-icon': {
+                                  color: 'primary.main'
+                                }
+                              }}
+                            >
+                              <AlertTitle>Disclaimer</AlertTitle>
+                              This prediction is based on historical data and market analysis. Cryptocurrency markets are highly volatile and predictions should not be considered as financial advice. Always do your own research before making investment decisions.
+                            </Alert>
                           </Grid>
                         </Paper>
                       </Box>
