@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/CryptoPredictor/static/css/main.2d566dbb.css",
+    "main.js": "/CryptoPredictor/static/js/main.0196c14c.js",
+    "static/js/453.14231382.chunk.js": "/CryptoPredictor/static/js/453.14231382.chunk.js",
+    "index.html": "/CryptoPredictor/index.html",
+    "main.2d566dbb.css.map": "/CryptoPredictor/static/css/main.2d566dbb.css.map",
+    "main.0196c14c.js.map": "/CryptoPredictor/static/js/main.0196c14c.js.map",
+    "453.14231382.chunk.js.map": "/CryptoPredictor/static/js/453.14231382.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2d566dbb.css",
+    "static/js/main.0196c14c.js"
+  ]
+}
