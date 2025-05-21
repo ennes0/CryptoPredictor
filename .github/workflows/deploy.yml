@@ -22,10 +22,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: './prediction/package-lock.json'
 
-      - name: Create CNAME file
-        run: |
-          echo "cryptopredict.com" > prediction/public/CNAME
-
       - name: Install dependencies
         run: |
           cd prediction
@@ -35,9 +31,8 @@ jobs:
         run: |
           cd prediction
           npm run build
-          # Copy .nojekyll to build directory
-          cp public/.nojekyll build/.nojekyll || touch build/.nojekyll
-          # No need to copy CNAME - it will be in the build dir from public/CNAME
+          # Ensure .nojekyll file exists in build directory
+          touch build/.nojekyll
         env:
           CI: false
 
