@@ -2,7 +2,7 @@
   "name": "cryptopredict",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yourusername.github.io/cryptopredict",
+  "homepage": "https://ennes0.github.io/CryptoPredictor",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
-    "gh-pages": "^6.3.0",
+    "gh-pages": "^6.0.0",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.3"
   }
