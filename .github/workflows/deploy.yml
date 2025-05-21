@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # This explicitly grants write permission
     
     steps:
       - name: Checkout 🛎️
@@ -37,6 +39,8 @@ jobs:
         with:
           folder: prediction/build # The folder the action should deploy.
           branch: gh-pages # The branch the action should deploy to.
-          token: ${{ secrets.GITHUB_TOKEN }} # Using built-in token for authentication
+          # Use GITHUB_TOKEN with explicit permissions instead of PAT
+          # The permissions block above ensures this has write access
+          token: ${{ secrets.GITHUB_TOKEN }}
           clean: true # Automatically remove deleted files from the deployment
           commit-message: "Deploy website [skip ci]"
