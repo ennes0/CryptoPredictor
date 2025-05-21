@@ -159,8 +159,10 @@ const AppFooter = ({ isDarkMode }) => {
   );
 };
 
-// Add API configuration
-const API_BASE_URL = 'http://localhost:8000';
+// Update API configuration to support both local development and production
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://your-backend-api-url.com' // Replace with your actual deployed backend URL
+  : 'http://localhost:8000';
 
 // Add API integration functions
 const fetchPrediction = async (coinSymbol, lookback = 60, futureDays = 7, mcSamples = 100, trainNewModel = false) => {
@@ -1625,6 +1627,20 @@ const handleOptionSelect = async (crypto) => {
                       }}
                     />
                     <Box 
+                      className="wave wave3" 
+                      sx={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        width: '200%',
+                        height: '100%',
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='${isDarkMode ? "%23121212" : "%23f5f7fa"}'%3E%3C/path%3E%3C/svg%3E")`,
+                        backgroundSize: '1200px 100%',
+                        backgroundRepeat: 'repeat-x',
+                        animation: 'wave-animation 10s linear infinite'
+                      }}
+                    />
+                    <Box 
                       className="crypto-waves-overlay"
                       sx={{
                         position: 'absolute',
@@ -1887,7 +1903,7 @@ const handleOptionSelect = async (crypto) => {
                               sx={{
                                 position: 'absolute',
                                 width: '100%',
-                                mt: 0.5,
+                                                               mt: 0.5,
                                 zIndex: 10,
                                 borderRadius: '12px',
                                 border: '1px solid rgba(59, 130, 246, 0.1)',
