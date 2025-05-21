@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Box,
   Typography,
@@ -11,12 +11,6 @@ import {
   Chip,
   Avatar,
   Grid,
-  Slider,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Alert,
   IconButton,
   List,
   ListItem,
@@ -25,41 +19,21 @@ import {
   Fade,
   ClickAwayListener,
   Skeleton,
-  Tooltip,
-  Zoom,
   Divider,
-  Stack,
+  Alert,
   AlertTitle,
-  Link,
-  Collapse,
-  useTheme,
-  useMediaQuery,
-  Badge,
-  Menu
+  Menu,
+  useTheme
 } from '@mui/material';
 import {
   Search,
   TrendingUp,
   TrendingDown,
-  Timeline,
-  Calculate,
   ShowChart,
-  ArrowForward,
-  Info,
+  Calculate,
   Close,
-  KeyboardArrowRight,
-  LightMode,
-  DarkMode,
   CloudOff,
-  KeyboardArrowDown,
   Analytics,
-  AccountBalanceWallet,
-  Percent,
-  Update,
-  ArrowUpward,
-  ArrowDownward,
-  InfoOutlined,
-  Notifications,
   Person,
   Settings,
   Logout
@@ -71,93 +45,13 @@ import ParticleBackground from './components/ParticleBackground';
 import './components/Navbar.css';
 
 // Import local components
-import PredictionResults from './components/PredictionResults';
-import AnimatedNumber from './components/AnimatedNumber';
 import SimpleAnimatedNumber from './SimpleAnimatedNumber';
 import PriceHistoryChart from './components/PriceHistoryChart';
-import PriceChangeChart from './components/PriceChangeChart';
 import TweetFeed from './components/TweetFeed';
 
-// Import search components
-import SearchSuggestions from './components/SearchSuggestions';
-import SearchCategories from './components/SearchCategories';
-import RecentSearches from './components/RecentSearches';
-import CryptoDetails from './components/CryptoDetails';
-
-// Import the new PredictionInputs component
+// Import PredictionInputs component
 import PredictionInputs from './components/PredictionInputs';
 import CustomCursor from './components/CustomCursor';
-
-// Simple Footer Component with Particle Background
-const AppFooter = ({ isDarkMode }) => {
-  return (
-    <Box
-      component="footer"
-      sx={{
-        position: 'relative',
-        pt: 6,
-        pb: 3,
-        mt: 6,
-        overflow: 'hidden',
-        backgroundColor: isDarkMode ? '#121212' : '#f5f7fa',
-        borderTop: '1px solid',
-        borderColor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
-      }}
-    >
-      <Box className="footer-particles">
-        {[...Array(20)].map((_, i) => (
-          <Box
-            key={i}
-            className="particle"
-            sx={{
-              width: Math.random() * 5 + 2,
-              height: Math.random() * 5 + 2,
-              backgroundColor: `rgba(59, 130, 246, ${Math.random() * 0.3 + 0.1})`,
-              borderRadius: '50%',
-              position: 'absolute',
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animation: `floatParticle ${Math.random() * 10 + 10}s infinite ease-in-out`
-            }}
-          />
-        ))}
-      </Box>
-
-      <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center' }}>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{
-              fontWeight: 700,
-              mb: 1,
-              backgroundImage: 'linear-gradient(90deg, #3b82f6, #8b5cf6)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              color: 'transparent'
-            }}
-          >
-            CryptoPredict
-          </Typography>
-
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-            AI-Powered Cryptocurrency Prediction Platform
-          </Typography>
-
-          <Divider sx={{ mb: 2 }} />
-
-          <Typography
-            variant="caption"
-            color="text.secondary"
-            sx={{ display: 'block' }}
-          >
-            © {new Date().getFullYear()} CryptoPredict. All rights reserved.
-          </Typography>
-        </Box>
-      </Container>
-    </Box>
-  );
-};
 
 // Update API configuration to support both local development and production
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
@@ -225,14 +119,12 @@ function App() {
   const [selectedTimeframe, setSelectedTimeframe] = useState('7d');
   const [investmentAmount, setInvestmentAmount] = useState(1000);
   const [riskLevel, setRiskLevel] = useState(2);
-  const [predictionResult, setPredictionResult] = useState(null);
   const [error, setError] = useState(null);
   const [showInfoBanner, setShowInfoBanner] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
   const [showAutocomplete, setShowAutocomplete] = useState(false);
   const searchInputRef = useRef(null);
   const [highlightedOption, setHighlightedOption] = useState(-1);
-  const [showGlowEffect, setShowGlowEffect] = useState(false);
   const [animateSearch, setAnimateSearch] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     // Check if there's a saved preference in localStorage
@@ -244,7 +136,6 @@ function App() {
     // Otherwise use saved preference
     return savedPreference === 'true';
   });
-  const [isFullyLoaded, setIsFullyLoaded] = useState(false);
   const [historicalData, setHistoricalData] = useState(null);
   const [apiError, setApiError] = useState(null);
   const [isFetchingCrypto, setIsFetchingCrypto] = useState(false);
@@ -252,18 +143,7 @@ function App() {
   const [searchInProgress, setSearchInProgress] = useState(false);
   const [cryptoList, setCryptoList] = useState([]);
 
-  // Add new state variables for enhanced animation
-  const [inputAnimation, setInputAnimation] = useState(false);
-  const [activeTimeframe, setActiveTimeframe] = useState('7d');
-  const [animateCalculation, setAnimateCalculation] = useState(false);
-  const [forecastAnimation, setForecastAnimation] = useState(false);
-
-  // Add new state variables for dynamic prediction results
-  const [animatedResults, setAnimatedResults] = useState(false);
-  const [chartAnimationComplete, setChartAnimationComplete] = useState(false);
-  const [highlightedMetric, setHighlightedMetric] = useState(null);
-
-  // Add new state variables for enhanced search features
+  // State for enhanced search features
   const [recentSearches, setRecentSearches] = useState([]);
   const [showRecentSearches, setShowRecentSearches] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
@@ -275,25 +155,14 @@ function App() {
     { id: 'cardano', name: 'Cardano', symbol: 'ADA', trend: '-0.5%', trending: false },
     { id: 'ripple', name: 'Ripple', symbol: 'XRP', trend: '-1.2%', trending: false }
   ]);
-  const [searchCategories, setSearchCategories] = useState([
-    { id: 'trending', name: 'Trending', icon: 'trending_up' },
-    { id: 'defi', name: 'DeFi', icon: 'account_balance' },
-    { id: 'nft', name: 'NFT', icon: 'palette' },
-    { id: 'metaverse', name: 'Metaverse', icon: 'view_in_ar' },
-    { id: 'smart-contract', name: 'Smart Contract', icon: 'description' }
-  ]);
-  const [selectedCategory, setSelectedCategory] = useState('trending');
 
   const [showPredictionResults, setShowPredictionResults] = useState(false);
   const [predictionData, setPredictionData] = useState(null);
-
   const [showCryptoDetails, setShowCryptoDetails] = useState(false);
-  const [selectedCryptoSymbol, setSelectedCryptoSymbol] = useState(null);
-  const [debugLog, setDebugLog] = useState([]);
-
   const [notificationCount, setNotificationCount] = useState(3);
   const [notificationsAnchorEl, setNotificationsAnchorEl] = useState(null);
   const [userMenuAnchorEl, setUserMenuAnchorEl] = useState(null);
+  const theme = useTheme();
 
   // Fix the fetchCoins placement issue - move this inside useEffect
   useEffect(() => {
@@ -391,7 +260,7 @@ function App() {
     }
   };
 
-const handleOptionSelect = async (crypto) => {
+  const handleOptionSelect = async (crypto) => {
     if (!crypto || !crypto.symbol) {
       console.error('Invalid crypto object:', crypto);
       return;
@@ -535,10 +404,6 @@ const handleOptionSelect = async (crypto) => {
     handleOptionSelect(crypto);
   };
 
-  const handleCategoryChange = (categoryId) => {
-    setSelectedCategory(categoryId);
-  };
-
   const handleRecentSearchClear = (e) => {
     e.stopPropagation();
     setRecentSearches([]);
@@ -548,16 +413,6 @@ const handleOptionSelect = async (crypto) => {
   const handleRecentSearchSelect = (crypto) => {
     handleOptionSelect(crypto);
   };
-
-  useEffect(() => {
-    if (predictionResult) {
-      setShowGlowEffect(true);
-      const timer = setTimeout(() => {
-        setShowGlowEffect(false);
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [predictionResult]);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -667,8 +522,6 @@ const handleOptionSelect = async (crypto) => {
 
     try {
         setCalculationStarted(true);
-        setAnimateCalculation(true);
-        setForecastAnimation(true);
         setError(null);
 
         // Format coin symbol
@@ -738,8 +591,6 @@ const handleOptionSelect = async (crypto) => {
     } finally {
         // Stop animations and reset states
         setCalculationStarted(false);
-        setAnimateCalculation(false);
-        setForecastAnimation(false);
         setLoading(false);
     }
 };
@@ -1903,7 +1754,7 @@ const handleOptionSelect = async (crypto) => {
                               sx={{
                                 position: 'absolute',
                                 width: '100%',
-                                                               mt: 0.5,
+                                mt: 0.5,
                                 zIndex: 10,
                                 borderRadius: '12px',
                                 border: '1px solid rgba(59, 130, 246, 0.1)',
@@ -2868,7 +2719,10 @@ const handleOptionSelect = async (crypto) => {
                       {/* All-time highs and lows */}
                       {(selectedCrypto.ath || selectedCrypto.atl) && (
                         <Box sx={{ mb: 4 }}>
-                          <Typography variant="h6" sx={{ mb: 2 }}>All-time Stats</Typography>
+                          <Typography variant="h6" sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                            <StarBorder color="primary" />
+                            All-time Stats
+                          </Typography>
                           <Grid container spacing={3}>
                             {selectedCrypto.ath && (
                               <Grid item xs={12} md={6}>
